@@ -200,7 +200,7 @@ dotify.state.attr = function(state) {
 	  return "";
   }
   
-  
+   
 }
 
 dotify.edge = function(edge) {
