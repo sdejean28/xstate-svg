@@ -17,8 +17,7 @@ node index.js
 and you get a graph.svg
 
 ## known limitation
-no actions in machine
-
+simple layout
 
 # example
 
