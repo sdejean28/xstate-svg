@@ -17,7 +17,7 @@ then use @aduh95/viz.js/sync to convert to svg
 and you get a graph.svg
 
 ## known limitation
-simple layout, need to add node format (for initial, final)
+simple layout, need to add node format options
 
 # example
 
@@ -27,4 +27,4 @@ Image from xstate-visualiser (https://xstate.js.org/viz/)
 
 graph.svg generated
 
-![alt text](https://github.com/sdejean28/xstate-svg/blob/main/capture2.jpg)
+![alt text](https://github.com/sdejean28/xstate-svg/blob/main/graph.svg)
