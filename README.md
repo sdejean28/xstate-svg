@@ -27,4 +27,4 @@ Image from xstate-visualiser (https://xstate.js.org/viz/)
 
 graph.svg generated
 
-![alt text](https://github.com/sdejean28/xstate-svg/blob/main/capture2.jpg)
+![alt text](https://github.com/sdejean28/xstate-svg/blob/main/graph.svg)
