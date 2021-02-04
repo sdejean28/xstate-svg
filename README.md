@@ -6,7 +6,9 @@ then use @aduh95/viz.js/sync to convert to svg
 
 # install
 git clone https://github.com/sdejean28/xstate-svg.git
+
 cd xstate-svg
+
 npm install
 
 # launch
