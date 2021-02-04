@@ -17,7 +17,7 @@ then use @aduh95/viz.js/sync to convert to svg
 and you get a graph.svg
 
 ## known limitation
-simple layout, need to add node format (for initial, final)
+simple layout, need to add node format options
 
 # example
 
