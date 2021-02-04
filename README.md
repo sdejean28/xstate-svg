@@ -17,4 +17,9 @@ node index.js
 and you get a graph.svg
 
 ## known limitation
-no actions
+no actions in machine
+
+
+#example
+![alt text](https://github.com/sdejean28/xstate-svg/blob/main/capture1.jpg)
+![alt text](https://github.com/sdejean28/xstate-svg/blob/main/capture2.jpg)
