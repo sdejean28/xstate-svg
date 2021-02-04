@@ -1,13 +1,10 @@
 {
-  "name": "xstate-visualize",
-  "version": "1.0.0",
-  "description": "",
-  "main": "mixin.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "name": "xstate-svg",
+  "version": "0.0.1",
+  "description": "convert XState machine to svg",
+  "main": "index.js",
+  "author": "sdejean28",
+  "license": "MIT",
   "dependencies": {
     "@aduh95/viz.js": "^3.3.0",
     "xstate": "^4.16.0"
