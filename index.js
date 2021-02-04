@@ -42,6 +42,7 @@ const toggleMachine = xstate.createMachine({
 
 const viz = visualize(toggleMachine, { name: 'toggleMachine', orientation: 'horizontal' });
 
+console.log(viz);
 
 try {
   fs.writeFileSync('graph.svg', vizRenderStringSync(viz));

@@ -55,10 +55,33 @@ dotcfg.rankdir = function(orientation) {
 //-------------------------------------------------------------------------------------------------
 
 dotcfg.states = function(config, options) {
+  var n, max, state,
+      output = [];
   
   // get states names as array
   var states = Object.keys(config.states) || [];
-  return states;
+  
+  for (n = 0, max = states.length ; n < max ; n++) {
+	  state = config.states[states[n]]; 
+	  dotcfg.state(states[n], state, config, options, output)
+  }
+  return output;
+}
+
+dotcfg.state = function(nom, state, config, options, output) {
+	var initial = config.initial;
+	
+	if (state.type && state.type == 'final') {
+		//console.log('final');
+		output.push(mixin({}, { name : nom, attribute : '[shape = box,style=filled,color=lightgrey]' }, {}))
+	} else if (initial && initial == nom) {
+		//console.log('final');
+		output.push(mixin({}, { name : nom, attribute : '[shape = cds]' }, {}))
+	} else {
+		//console.log('default');
+		output.push(mixin({}, { name : nom }, {}))
+	}
+	
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -70,10 +93,7 @@ dotcfg.transitions = function(config, options) {
       states = Object.keys(config.states) || [], // easier to visualize using the ORIGINAL transition declarations rather than our run-time mapping
       output = [];
   
-	// create initial/startup transition
-	if (initial)
-		output.push(mixin({}, { from: '-', to: initial, label: 'start' }, {}))
-  
+ 
   for (n = 0, max = states.length ; n < max ; n++) {
  
 	// loop overt each state
@@ -167,7 +187,20 @@ function dotify(dotcfg) {
 
 
 dotify.state = function(state) {
-  return "  " + quote(state) + ";"
+	
+  // console.log('dotify.state', state);
+	
+  return "  " + quote(state.name) + dotify.state.attr(state) + ";"
+}
+
+dotify.state.attr = function(state) {
+  if (state.attribute) {
+	  return " " + state.attribute + " ";
+  } else {
+	  return "";
+  }
+  
+  
 }
 
 dotify.edge = function(edge) {
