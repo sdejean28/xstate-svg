@@ -21,5 +21,10 @@ no actions in machine
 
 
 #example
+Image from xstate-visualiser (https://xstate.js.org/viz/)
+
 ![alt text](https://github.com/sdejean28/xstate-svg/blob/main/capture1.jpg)
+
+graph.svg generated
+
 ![alt text](https://github.com/sdejean28/xstate-svg/blob/main/capture2.jpg)
