@@ -17,7 +17,7 @@ node index.js
 and you get a graph.svg
 
 ## known limitation
-simple layout
+simple layout, need to add node format (for initial, final)
 
 # example
 
