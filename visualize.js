@@ -71,12 +71,16 @@ dotcfg.states = function(config, options) {
 dotcfg.state = function(nom, state, config, options, output) {
 	var initial = config.initial;
 	
+	console.log('>', nom, state);
+	
+	
 	if (state.type && state.type == 'final') {
 		//console.log('final');
 		output.push(mixin({}, { name : nom, attribute : '[shape = box,style=filled,color=lightgrey]' }, {}))
 	} else if (initial && initial == nom) {
 		//console.log('final');
-		output.push(mixin({}, { name : nom, attribute : '[shape = cds]' }, {}))
+		output.push(mixin({}, { name : "initial", attribute : '[shape = point]' }, {}))
+		output.push(mixin({}, { name : initial, attribute : '[shape = box]' }, {}))
 	} else {
 		//console.log('default');
 		output.push(mixin({}, { name : nom }, {}))
@@ -93,6 +97,10 @@ dotcfg.transitions = function(config, options) {
       states = Object.keys(config.states) || [], // easier to visualize using the ORIGINAL transition declarations rather than our run-time mapping
       output = [];
   
+	if (initial) {
+		output.push(mixin({}, { from: "initial", to: initial }, {}))
+	}
+ 
  
   for (n = 0, max = states.length ; n < max ; n++) {
  
@@ -108,38 +116,46 @@ dotcfg.transition = function(from, state, config, options, output) {
   var n,m, max_n,max_m, to, to_node;
 
 	// for each state, check scenarios
+	// console.log('>>', from, state);
 
 	var scenarios = Object.keys(state) || [];
 	
 	for(n = 0, max_n = scenarios.length ; n < max_n ; n++) {
-		// for each scenario, check transition
-		var opt = state[scenarios[n]];
-			
-		if (typeof opt == 'string') {
-			
-			// need to manage type for final
-			
-		} else {
-			
-			var opt_keys = Object.keys(opt) || [];
-					
-			for(m = 0, max_m = opt_keys.length ; m < max_m ; m++) {
-				
-				
-				to = opt[opt_keys[m]];
-				
-				if (typeof to == 'string')
-					to_node = to;
-				else if (typeof to == 'object') {
-					to_node = to.target;
-				} else {
-					to_node = '???';
-				}
-				
-				output.push(mixin({}, { from: from, to: to_node, label: scenarios[n]+' '+opt_keys[m] }, {}))
-			}
-		}
 		
+		if (scenarios[n] == 'after' || scenarios[n] == 'on' ) {
+		
+			// for each scenario, check transition
+			var opt = state[scenarios[n]];
+				
+			// console.log('---', scenarios[n], opt);
+				
+			if (typeof opt == 'string') {
+				
+				// need to manage type for final
+				
+			} else {
+				
+				var opt_keys = Object.keys(opt) || [];
+						
+				for(m = 0, max_m = opt_keys.length ; m < max_m ; m++) {
+					
+					to = opt[opt_keys[m]];
+					
+					// console.log('****', opt_keys[m], to, typeof to);
+					
+					if (typeof to == 'string')
+						to_node = to;
+					else if (typeof to == 'object') {
+						to_node = to.target;
+					} else {
+						to_node = '???';
+					}
+					
+					output.push(mixin({}, { from: from, to: to_node, label: scenarios[n]+' '+opt_keys[m] }, {}))
+				}
+			}
+		
+		}
 
 
 	}
