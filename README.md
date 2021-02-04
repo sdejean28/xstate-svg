@@ -5,14 +5,14 @@ Inspired from https://github.com/jakesgordon/javascript-state-machine to convert
 then use @aduh95/viz.js/sync to convert to svg
 
 # install
-git clone https://github.com/sdejean28/xstate-svg.git
+```git clone https://github.com/sdejean28/xstate-svg.git```
 
-cd xstate-svg
+```cd xstate-svg```
 
-npm install
+```npm install```
 
 # launch
-node index.js
+```node index.js```
 
 and you get a graph.svg
 
