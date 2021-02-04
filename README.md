@@ -20,7 +20,8 @@ and you get a graph.svg
 no actions in machine
 
 
-#example
+# example
+
 Image from xstate-visualiser (https://xstate.js.org/viz/)
 
 ![alt text](https://github.com/sdejean28/xstate-svg/blob/main/capture1.jpg)
