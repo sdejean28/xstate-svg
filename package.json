@@ -1,0 +1,15 @@
+{
+  "name": "xstate-visualize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mixin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aduh95/viz.js": "^3.3.0",
+    "xstate": "^4.16.0"
+  }
+}
