@@ -84,7 +84,7 @@ dotcfg.transitions = function(config, options) {
 }
 
 dotcfg.transition = function(from, state, config, options, output) {
-  var n,m, max_n,max_m;
+  var n,m, max_n,max_m, to, to_node;
 
 	// for each state, check scenarios
 
@@ -94,10 +94,34 @@ dotcfg.transition = function(from, state, config, options, output) {
 		// for each scenario, check transition
 		var opt = state[scenarios[n]];
 		
-		var opt_keys = Object.keys(opt) || [];
-		for(m = 0, max_m = opt_keys.length ; m < max_m ; m++) {
-			output.push(mixin({}, { from: from, to: opt[opt_keys[m]], label: scenarios[n]+' '+opt_keys[m] }, {}))
+		console.log('opt', opt);
+		
+		if (typeof opt == 'string') {
+			
+			// need to manage type for final
+			
+		} else {
+			
+			var opt_keys = Object.keys(opt) || [];
+					
+			for(m = 0, max_m = opt_keys.length ; m < max_m ; m++) {
+				
+				
+				to = opt[opt_keys[m]];
+				
+				if (typeof to == 'string')
+					to_node = to;
+				else if (typeof to == 'object') {
+					to_node = to.target;
+				} else {
+					to_node = '???';
+				}
+				
+				output.push(mixin({}, { from: from, to: to_node, label: scenarios[n]+' '+opt_keys[m] }, {}))
+			}
 		}
+		
+
 
 	}
 
