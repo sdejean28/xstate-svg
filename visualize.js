@@ -71,7 +71,8 @@ dotcfg.transitions = function(config, options) {
       output = [];
   
 	// create initial/startup transition
-  output.push(mixin({}, { from: 'start', to: initial, label: 'start' }, {}))
+	if (initial)
+		output.push(mixin({}, { from: '-', to: initial, label: 'start' }, {}))
   
   for (n = 0, max = states.length ; n < max ; n++) {
  
@@ -93,9 +94,7 @@ dotcfg.transition = function(from, state, config, options, output) {
 	for(n = 0, max_n = scenarios.length ; n < max_n ; n++) {
 		// for each scenario, check transition
 		var opt = state[scenarios[n]];
-		
-		console.log('opt', opt);
-		
+			
 		if (typeof opt == 'string') {
 			
 			// need to manage type for final
